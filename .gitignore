@@ -1,0 +1,4 @@
+.claude/
+.env
+*.bak
+*.orig

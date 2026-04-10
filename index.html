@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StrengthsFinder — Discover Your Top 5 Strengths</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#006b62",
+            "primary-dim": "#005e56",
+            "primary-container": "#83efe1",
+            "primary-fixed": "#83efe1",
+            "on-primary": "#e2fff9",
+            "on-primary-container": "#005951",
+            "surface": "#e2fffe",
+            "surface-dim": "#a1e6e6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#d3fbfa",
+            "surface-container": "#c8f7f6",
+            "surface-container-high": "#bcf2f1",
+            "surface-container-highest": "#b0eeed",
+            "on-surface": "#003939",
+            "on-surface-variant": "#2a6868",
+            "outline": "#488484",
+            "outline-variant": "#80bdbc",
+            "tertiary": "#865400",
+            "tertiary-container": "#fea619",
+            "on-tertiary-container": "#4f3000",
+            "error": "#ac3434",
+            "error-container": "#f56965"
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          fontFamily: { "headline": ["Manrope", "sans-serif"], "body": ["Inter", "sans-serif"], "label": ["Inter", "sans-serif"] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #e2fffe; color: #003939; }
+    h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+    .gradient-primary { background: linear-gradient(135deg, #006b62 0%, #83efe1 100%); }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    @media print { body { display: none; } }
+  </style>
+</head>
+<body class="bg-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl" style="box-shadow: 0 1px 0 rgba(0,57,57,0.06);">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 h-18 flex items-center justify-between" style="height: 72px;">
+      <div class="font-headline font-black text-xl text-on-surface tracking-tight">
+        Strength<span class="text-primary">Finder</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-label font-bold tracking-widest uppercase text-on-surface-variant hidden sm:block">
+          Based on CliftonStrengths® by Gallup
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-30" style="background: radial-gradient(circle, #83efe1, transparent 70%);"></div>
+      <div class="absolute bottom-0 -left-12 w-72 h-72 rounded-full opacity-20" style="background: radial-gradient(circle, #006b62, transparent 70%);"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 md:px-8">
+      <div class="max-w-3xl">
+        <!-- Eyebrow -->
+        <p class="text-xs font-label font-bold tracking-widest uppercase text-primary mb-6">
+          34 Themes · 177 Questions · Your Top 5 Strengths
+        </p>
+
+        <!-- Headline -->
+        <h1 class="font-headline font-extrabold text-5xl md:text-7xl text-on-surface leading-[1.1] tracking-tighter mb-6">
+          Discover Your <br/>
+          <span class="text-primary italic">Hidden Potential</span>
+        </h1>
+
+        <p class="text-xl text-on-surface-variant max-w-2xl mb-10 leading-relaxed font-body">
+          Take the StrengthsFinder assessment — 177 paired-statement questions, each with a 20-second timer — and uncover the 5 talent themes that define how you think, feel, and behave at your best.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4" id="cta-area">
+          <button id="start-btn"
+                  class="gradient-primary text-on-primary px-8 py-4 rounded-xl text-lg font-headline font-bold shadow-lg hover:opacity-90 active:scale-95 transition-all">
+            Start Your Assessment →
+          </button>
+          <button id="resume-btn"
+                  class="hidden bg-surface-container-high text-on-surface px-8 py-4 rounded-xl text-lg font-headline font-bold hover:bg-surface-container-highest active:scale-95 transition-all">
+            Resume Assessment
+          </button>
+        </div>
+
+        <!-- Resume warning (if in-progress session found) -->
+        <div id="resume-notice" class="hidden mt-4 text-sm text-on-surface-variant font-body">
+          You have an in-progress assessment.
+          <button id="clear-btn" class="text-primary font-semibold hover:underline ml-1">Start over instead</button>
+        </div>
+
+        <!-- Info pills -->
+        <div class="mt-12 flex flex-wrap gap-4">
+          <div class="flex items-center gap-2 bg-surface-container-lowest rounded-full px-4 py-2"
+               style="box-shadow: 0px 8px 20px rgba(0,57,57,0.06);">
+            <span class="material-symbols-outlined text-primary text-base">schedule</span>
+            <span class="text-sm font-body font-medium text-on-surface">30–40 minutes</span>
+          </div>
+          <div class="flex items-center gap-2 bg-surface-container-lowest rounded-full px-4 py-2"
+               style="box-shadow: 0px 8px 20px rgba(0,57,57,0.06);">
+            <span class="material-symbols-outlined text-primary text-base">quiz</span>
+            <span class="text-sm font-body font-medium text-on-surface">177 questions</span>
+          </div>
+          <div class="flex items-center gap-2 bg-surface-container-lowest rounded-full px-4 py-2"
+               style="box-shadow: 0px 8px 20px rgba(0,57,57,0.06);">
+            <span class="material-symbols-outlined text-primary text-base">lock</span>
+            <span class="text-sm font-body font-medium text-on-surface">Saved locally — no account needed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- How It Works -->
+  <section class="py-24 bg-surface-container-low/60">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="text-center mb-16">
+        <span class="text-xs font-label font-bold tracking-widest uppercase text-primary">The Process</span>
+        <h2 class="font-headline font-extrabold text-4xl md:text-5xl text-on-surface mt-4 tracking-tight">Three steps to self-knowledge.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Step 1 -->
+        <div class="relative bg-surface-container-lowest rounded-3xl p-8 md:p-10 overflow-hidden group hover:bg-white transition-all duration-500"
+             style="box-shadow: 0px 20px 40px rgba(0,57,57,0.06);">
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-3xl bg-primary"></div>
+          <div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-headline font-black text-xl mb-6">1</div>
+          <h3 class="font-headline font-bold text-2xl text-on-surface mb-3">Take the Assessment</h3>
+          <p class="text-on-surface-variant leading-relaxed">Answer 177 paired statements — each with a 20-second timer encouraging your natural, instinctive response.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative bg-primary text-on-primary rounded-3xl p-8 md:p-10 overflow-hidden"
+             style="box-shadow: 0px 20px 40px rgba(0,57,57,0.12);">
+          <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center font-headline font-black text-xl mb-6">2</div>
+          <h3 class="font-headline font-bold text-2xl mb-3">Get Your Results</h3>
+          <p class="text-primary-container/80 leading-relaxed">Instantly see your top 5 strengths from 34 possible themes — ranked and scored, with detailed descriptions.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative bg-surface-container-lowest rounded-3xl p-8 md:p-10 overflow-hidden group hover:bg-white transition-all duration-500"
+             style="box-shadow: 0px 20px 40px rgba(0,57,57,0.06);">
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-3xl" style="background-color: #865400;"></div>
+          <div class="w-12 h-12 rounded-full flex items-center justify-center font-headline font-black text-xl mb-6 text-white" style="background-color: #865400;">3</div>
+          <h3 class="font-headline font-bold text-2xl text-on-surface mb-3">Apply Your Strengths</h3>
+          <p class="text-on-surface-variant leading-relaxed">Each strength comes with practical action items — concrete ways to apply your natural talents every day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 34 Themes Preview -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs font-label font-bold tracking-widest uppercase text-primary">The Framework</span>
+        <h2 class="font-headline font-extrabold text-4xl md:text-5xl text-on-surface mt-4 tracking-tight leading-tight">34 Themes across 4 domains.</h2>
+        <p class="text-on-surface-variant mt-4 text-lg leading-relaxed">Every person's unique combination of 5 from these 34 themes creates a one-of-a-kind talent profile.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Executing -->
+        <div class="bg-surface-container-lowest rounded-3xl p-6" style="box-shadow: 0px 20px 40px rgba(0,57,57,0.06);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-3 h-3 rounded-full bg-primary"></div>
+            <h3 class="font-headline font-bold text-on-surface">Executing</h3>
+          </div>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant font-body">
+            <li>Achiever</li><li>Arranger</li><li>Belief</li><li>Consistency</li>
+            <li>Deliberative</li><li>Discipline</li><li>Focus</li><li>Responsibility</li>
+            <li>Restorative</li>
+          </ul>
+        </div>
+
+        <!-- Influencing -->
+        <div class="bg-surface-container-lowest rounded-3xl p-6" style="box-shadow: 0px 20px 40px rgba(0,57,57,0.06);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-3 h-3 rounded-full" style="background-color: #865400;"></div>
+            <h3 class="font-headline font-bold text-on-surface">Influencing</h3>
+          </div>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant font-body">
+            <li>Activator</li><li>Command</li><li>Communication</li><li>Competition</li>
+            <li>Maximizer</li><li>Self-Assurance</li><li>Significance</li><li>Woo</li>
+          </ul>
+        </div>
+
+        <!-- Relationship Building -->
+        <div class="bg-surface-container-lowest rounded-3xl p-6" style="box-shadow: 0px 20px 40px rgba(0,57,57,0.06);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-3 h-3 rounded-full" style="background-color: #2E7D32;"></div>
+            <h3 class="font-headline font-bold text-on-surface">Relationship Building</h3>
+          </div>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant font-body">
+            <li>Adaptability</li><li>Connectedness</li><li>Developer</li><li>Empathy</li>
+            <li>Harmony</li><li>Includer</li><li>Individualization</li><li>Positivity</li>
+            <li>Relator</li>
+          </ul>
+        </div>
+
+        <!-- Strategic Thinking -->
+        <div class="bg-surface-container-lowest rounded-3xl p-6" style="box-shadow: 0px 20px 40px rgba(0,57,57,0.06);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-3 h-3 rounded-full" style="background-color: #4F46E5;"></div>
+            <h3 class="font-headline font-bold text-on-surface">Strategic Thinking</h3>
+          </div>
+          <ul class="space-y-1.5 text-sm text-on-surface-variant font-body">
+            <li>Analytical</li><li>Context</li><li>Futuristic</li><li>Ideation</li>
+            <li>Input</li><li>Intellection</li><li>Learner</li><li>Strategic</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-24 px-6 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="gradient-primary rounded-[2.5rem] p-12 md:p-24 text-center text-on-primary relative overflow-hidden"
+           style="box-shadow: 0px 40px 80px rgba(0,57,57,0.15);">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+          <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path d="M0 100 L50 0 L100 100 Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="relative z-10">
+          <h2 class="font-headline font-extrabold text-4xl md:text-6xl mb-6 tracking-tighter">Ready to find your strengths?</h2>
+          <p class="text-xl text-primary-container mb-10 max-w-2xl mx-auto">
+            Your results are private, stored only in your browser, and ready the moment you finish.
+          </p>
+          <button id="start-btn-2"
+                  class="bg-white text-primary px-10 py-5 rounded-2xl text-xl font-headline font-bold shadow-xl hover:scale-105 active:scale-95 transition-transform">
+            Begin Assessment →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 bg-on-surface">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-headline font-black text-lg tracking-tight" style="color: #84a3a2;">
+        Strength<span style="color: #83efe1;">Finder</span>
+      </div>
+      <p class="text-xs font-label tracking-widest uppercase text-center" style="color: rgba(132,163,162,0.6);">
+        Educational recreation inspired by CliftonStrengths® 2.0 by Tom Rath · Gallup®
+      </p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { getSession, clearSession, createSession, saveSession } from './js/utils.js';
+
+    const startBtn   = document.getElementById('start-btn');
+    const startBtn2  = document.getElementById('start-btn-2');
+    const resumeBtn  = document.getElementById('resume-btn');
+    const clearBtn   = document.getElementById('clear-btn');
+    const resumeNotice = document.getElementById('resume-notice');
+
+    function startNew() {
+      const session = createSession();
+      saveSession(session);
+      window.location.href = 'assessment.html';
+    }
+
+    // Check for existing session
+    const existing = getSession();
+    if (existing && !existing.completedAt && existing.responses.length > 0) {
+      resumeBtn.classList.remove('hidden');
+      resumeNotice.classList.remove('hidden');
+
+      resumeBtn.addEventListener('click', () => {
+        window.location.href = 'assessment.html';
+      });
+
+      clearBtn.addEventListener('click', () => {
+        clearSession();
+        resumeBtn.classList.add('hidden');
+        resumeNotice.classList.add('hidden');
+        startNew();
+      });
+    } else if (existing && existing.completedAt) {
+      startBtn.textContent = 'View Your Results →';
+      startBtn.addEventListener('click', () => window.location.href = 'results.html');
+      startBtn2.textContent = 'View Results →';
+      startBtn2.addEventListener('click', () => window.location.href = 'results.html');
+    } else {
+      startBtn.addEventListener('click', startNew);
+      startBtn2.addEventListener('click', startNew);
+    }
+  </script>
+</body>
+</html>

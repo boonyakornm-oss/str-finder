@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StrengthsFinder — Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#006b62",
+            "primary-dim": "#005e56",
+            "primary-container": "#83efe1",
+            "primary-fixed": "#83efe1",
+            "on-primary": "#e2fff9",
+            "on-primary-container": "#005951",
+            "surface": "#e2fffe",
+            "surface-dim": "#a1e6e6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#d3fbfa",
+            "surface-container": "#c8f7f6",
+            "surface-container-high": "#bcf2f1",
+            "surface-container-highest": "#b0eeed",
+            "on-surface": "#003939",
+            "on-surface-variant": "#2a6868",
+            "outline": "#488484",
+            "outline-variant": "#80bdbc",
+            "tertiary": "#865400",
+            "error": "#ac3434",
+            "error-container": "#f56965"
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          fontFamily: { "headline": ["Manrope","sans-serif"], "body": ["Inter","sans-serif"], "label": ["Inter","sans-serif"] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #e2fffe; color: #003939; }
+    h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+
+    /* Timer bar urgent pulse */
+    #timer-bar.urgent {
+      background-color: #ac3434 !important;
+      animation: urgentPulse 0.6s ease-in-out infinite alternate;
+    }
+    @keyframes urgentPulse {
+      from { opacity: 1; }
+      to   { opacity: 0.65; }
+    }
+
+    /* Scale button base */
+    .scale-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      padding: 8px 4px;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    .scale-btn:hover .dot { opacity: 1; transform: scale(1.15); }
+    .scale-btn:active { transform: scale(0.92); }
+
+    .scale-btn .dot {
+      border-radius: 9999px;
+      background-color: #80bdbc;
+      transition: background-color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+      opacity: 0.6;
+    }
+    /* Dot sizes: A-full, A-partial, neutral, B-partial, B-full */
+    .scale-btn[data-value="1"] .dot { width: 28px; height: 28px; }
+    .scale-btn[data-value="2"] .dot { width: 20px; height: 20px; }
+    .scale-btn[data-value="3"] .dot { width: 12px; height: 12px; }
+    .scale-btn[data-value="4"] .dot { width: 20px; height: 20px; }
+    .scale-btn[data-value="5"] .dot { width: 28px; height: 28px; }
+
+    /* Selected state */
+    .scale-btn.selected .dot {
+      background-color: #006b62;
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    .scale-btn.selected { opacity: 1; }
+
+    /* Dim unselected when something is selected */
+    .scale-group.has-selection .scale-btn:not(.selected) .dot {
+      opacity: 0.25;
+    }
+    .scale-group.has-selection .scale-btn:not(.selected) .label-text {
+      opacity: 0.35;
+    }
+
+    /* Mobile: larger touch targets */
+    @media (max-width: 480px) {
+      .scale-btn[data-value="1"] .dot,
+      .scale-btn[data-value="5"] .dot { width: 32px; height: 32px; }
+      .scale-btn[data-value="2"] .dot,
+      .scale-btn[data-value="4"] .dot { width: 22px; height: 22px; }
+      .scale-btn { min-width: 52px; min-height: 52px; }
+    }
+
+    @media print { body { display: none; } }
+  </style>
+</head>
+<body class="bg-surface min-h-screen flex flex-col">
+
+  <!-- Top bar: progress + timer -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl px-4 md:px-8 pt-4 pb-3"
+          style="box-shadow: 0 1px 0 rgba(0,57,57,0.06);">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Progress row -->
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-label font-bold tracking-widest uppercase text-on-surface-variant">Progress</span>
+        <span id="progress-label" class="text-xs font-label font-bold text-on-surface-variant">0 / 177</span>
+      </div>
+      <div class="h-2 rounded-full bg-primary-container overflow-hidden mb-3">
+        <div id="progress-bar"
+             class="h-full rounded-full bg-primary transition-all duration-300"
+             style="width: 0%;"></div>
+      </div>
+
+      <!-- Timer row -->
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-xs font-label font-bold tracking-widest uppercase text-on-surface-variant">Time Remaining</span>
+        <span id="timer-label" class="text-xs font-label font-bold text-on-surface-variant tabular-nums">20s</span>
+      </div>
+      <div class="h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+        <div id="timer-bar"
+             class="h-full rounded-full bg-primary transition-none"
+             style="width: 100%;"></div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Question card -->
+  <main class="flex-1 flex items-center justify-center px-4 md:px-8 py-8 md:py-12">
+    <div class="w-full max-w-3xl">
+
+      <article id="question-card"
+               class="bg-surface-container-lowest rounded-3xl p-6 md:p-10"
+               style="box-shadow: 0px 20px 40px rgba(0,57,57,0.07); opacity: 1; transform: translateY(0);">
+
+        <!-- Instructions (shown only on Q1) -->
+        <p id="instructions-hint"
+           class="text-xs font-label font-bold tracking-widest uppercase text-on-surface-variant/70 text-center mb-6">
+          Which statement describes you better? Pick the one that feels most natural.
+        </p>
+
+        <!-- Statement A -->
+        <div class="mb-6 md:mb-8">
+          <p class="text-xs font-label font-bold tracking-widest uppercase text-primary mb-2">Statement A</p>
+          <p id="stmt-a"
+             class="font-headline font-semibold text-xl md:text-2xl text-on-surface leading-snug">
+          </p>
+        </div>
+
+        <!-- Scale -->
+        <div class="scale-group flex items-end justify-between gap-1 sm:gap-2 px-2 md:px-4 py-4 rounded-2xl bg-surface-container-low"
+             role="radiogroup"
+             aria-label="How well does this statement describe you compared to the other?">
+
+          <button class="scale-btn flex-1" data-value="1" aria-pressed="false"
+                  aria-label="Completely describes Statement A">
+            <span class="dot"></span>
+            <span class="label-text text-[10px] font-label font-bold tracking-wide text-center text-on-surface-variant leading-tight" style="max-width: 48px;">Completely A</span>
+          </button>
+
+          <button class="scale-btn flex-1" data-value="2" aria-pressed="false"
+                  aria-label="Somewhat describes Statement A">
+            <span class="dot"></span>
+            <span class="label-text text-[10px] font-label font-bold tracking-wide text-center text-on-surface-variant leading-tight" style="max-width: 44px;">Somewhat A</span>
+          </button>
+
+          <button class="scale-btn flex-1" data-value="3" aria-pressed="false"
+                  aria-label="Neutral — neither statement describes me strongly">
+            <span class="dot"></span>
+            <span class="label-text text-[10px] font-label font-bold tracking-wide text-center text-on-surface-variant leading-tight" style="max-width: 40px;">Neutral</span>
+          </button>
+
+          <button class="scale-btn flex-1" data-value="4" aria-pressed="false"
+                  aria-label="Somewhat describes Statement B">
+            <span class="dot"></span>
+            <span class="label-text text-[10px] font-label font-bold tracking-wide text-center text-on-surface-variant leading-tight" style="max-width: 44px;">Somewhat B</span>
+          </button>
+
+          <button class="scale-btn flex-1" data-value="5" aria-pressed="false"
+                  aria-label="Completely describes Statement B">
+            <span class="dot"></span>
+            <span class="label-text text-[10px] font-label font-bold tracking-wide text-center text-on-surface-variant leading-tight" style="max-width: 48px;">Completely B</span>
+          </button>
+        </div>
+
+        <!-- Statement B -->
+        <div class="mt-6 md:mt-8">
+          <p class="text-xs font-label font-bold tracking-widest uppercase text-[#865400] mb-2">Statement B</p>
+          <p id="stmt-b"
+             class="font-headline font-semibold text-xl md:text-2xl text-on-surface leading-snug">
+          </p>
+        </div>
+
+      </article>
+
+      <!-- Keyboard hint -->
+      <p class="text-center text-xs text-on-surface-variant/50 font-body mt-4 hidden md:block">
+        Keys 1–5 to select · Enter to confirm · ← → to navigate
+      </p>
+
+    </div>
+  </main>
+
+  <script type="module" src="./js/assessment.js"></script>
+</body>
+</html>

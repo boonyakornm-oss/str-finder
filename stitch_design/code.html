@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ascent Strength | Unlock Your Hidden Potential</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ac3434",
+                    "inverse-surface": "#001111",
+                    "on-secondary-fixed": "#374155",
+                    "inverse-primary": "#91feef",
+                    "on-surface-variant": "#2a6868",
+                    "on-tertiary-fixed": "#311c00",
+                    "on-tertiary-container": "#4f3000",
+                    "secondary": "#545f74",
+                    "surface-variant": "#b0eeed",
+                    "on-primary-fixed": "#00443e",
+                    "surface": "#e2fffe",
+                    "secondary-fixed": "#dae6fe",
+                    "on-secondary-fixed-variant": "#535e72",
+                    "tertiary-fixed": "#fea619",
+                    "surface-dim": "#a1e6e6",
+                    "primary-fixed-dim": "#74e1d3",
+                    "outline-variant": "#80bdbc",
+                    "surface-bright": "#e2fffe",
+                    "on-primary-fixed-variant": "#00635b",
+                    "on-error": "#fff7f6",
+                    "on-tertiary": "#fff7f3",
+                    "tertiary": "#865400",
+                    "surface-container-low": "#d3fbfa",
+                    "secondary-container": "#dae6fe",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#84a3a2",
+                    "on-secondary": "#f8f8ff",
+                    "primary": "#006b62",
+                    "primary-container": "#83efe1",
+                    "secondary-dim": "#485367",
+                    "primary-fixed": "#83efe1",
+                    "background": "#e2fffe",
+                    "primary-dim": "#005e56",
+                    "on-surface": "#003939",
+                    "on-background": "#003939",
+                    "tertiary-fixed-dim": "#ee9800",
+                    "error-dim": "#70030f",
+                    "outline": "#488484",
+                    "on-error-container": "#65000b",
+                    "error-container": "#f56965",
+                    "on-tertiary-fixed-variant": "#5b3800",
+                    "surface-tint": "#006b62",
+                    "on-primary-container": "#005951",
+                    "on-primary": "#e2fff9",
+                    "surface-container-high": "#bcf2f1",
+                    "on-secondary-container": "#495468",
+                    "tertiary-dim": "#764900",
+                    "surface-container": "#c8f7f6",
+                    "secondary-fixed-dim": "#ccd7ef",
+                    "surface-container-highest": "#b0eeed",
+                    "tertiary-container": "#fea619"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #e2fffe; color: #003939; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+        .gradient-primary { background: linear-gradient(135deg, #006b62 0%, #83efe1 100%); }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-teal-950/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-black text-teal-900 dark:text-teal-100 tracking-tighter">
+                Strength &amp; Growth
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-manrope text-sm font-semibold tracking-tight uppercase">
+<a class="text-teal-900 dark:text-teal-50 border-b-2 border-teal-600 transition-colors duration-300" href="#">Features</a>
+<a class="text-teal-600 dark:text-teal-400 hover:text-teal-900 dark:hover:text-teal-200 transition-colors duration-300" href="#">Pricing</a>
+<a class="text-teal-600 dark:text-teal-400 hover:text-teal-900 dark:hover:text-teal-200 transition-colors duration-300" href="#">About</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="font-manrope text-sm font-semibold tracking-tight uppercase text-teal-600 dark:text-teal-400 hover:text-teal-900 transition-colors duration-300 scale-95 active:opacity-80">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-manrope text-sm font-semibold tracking-tight uppercase shadow-sm hover:opacity-90 transition-all scale-95 active:opacity-80">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 z-10">
+<h1 class="text-5xl md:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tighter mb-6">
+                    Unlock Your <span class="text-primary italic">Hidden Potential</span>
+</h1>
+<p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mb-10 leading-relaxed font-body">
+                    Discover your top 5 strengths and build a life of purpose and productivity with Ascent Strength.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="gradient-primary text-on-primary px-8 py-4 rounded-xl text-lg font-bold shadow-lg hover:shadow-primary/20 transition-all scale-95 active:scale-90">
+                        Start Your Free Assessment
+                    </button>
+<button class="bg-surface-container-high text-on-surface px-8 py-4 rounded-xl text-lg font-bold hover:bg-surface-container-highest transition-all scale-95 active:scale-90">
+                        View Sample Report
+                    </button>
+</div>
+<div class="mt-12 flex items-center space-x-6 text-on-surface-variant/70">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-surface" data-alt="professional headshot of a smiling woman in business attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArll2gchxouRIgsStHIetBj3xXK8dgo7xIzPt9bOZ5VByKT2yc0PdNxTOEXLASsAh_1HVN5hXwtexM4Vf9QTsi7x2wJtzA5zQXGzYsnluDR0gthoeX2qbxu3ogQXEb76FkumVOYe3zA_TP7H6Dflw1WDVqHpwQ4FC-fdO569ESPca94d1tjgvIB96Ox23toBud_8Pfbw68tuxK0qfXggQ4ILdX0_Nj76528C9rQPqECkHoJjR3iqb8NjLD3eqL5En4O2QKbpwXpPK_"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface" data-alt="close-up of a smiling young man with modern glasses and casual hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEG-o4ET2FCcHOwyY4oMnJOygwti4C0o9VdO0SQHN5nA2TALjNDVDoVl0Hzp0KLb9bn5K9y9Gwsfkxl-e4c7YdxDt5qARmCMrSx5VN2dcEQUpcISxO2DN23wXLs4nKu8uaZTDHduG0a58T8rfFq02rq4jxX0GbXmGKFAnVxcTB5lBmeb7AMbCeO8FDHTXXIsHdgfkiUNv79d_RhM0JZX73zFSULwiHcXdkBfyYUAh44qbGvBTAKLiTOZw3TmoJq4Zi2KSUx1WDS6Kl"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface" data-alt="portrait of a confident female executive with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZJIIiMywVJ_r5r9mJTlhhFEZZeFzIVi_c3geCtJLGyzQSoSG2IIglidszQj2Pq00kH08Nb9ldtO55pZnjuc6GHqg1SZcETca7xSsWDQSpQ8hVZQo5tweQ84pH4uM68z5iE7yq-qGf7Ukpm7jZRhA5D_DuMl-arsd-naykXvxX1kDEjaVNyoa75sQkKfnGEAXCsxERnPo8QShFTA5PjFTkROYZVygJNvVzD5Do4aOoozbwdCU9mDwOYvM68dPJccXb0jK7dwEL9odp"/>
+</div>
+<span class="text-sm font-medium tracking-wide font-label uppercase">Trusted by 50,000+ Achievers</span>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative rounded-3xl overflow-hidden aspect-square md:aspect-[4/5] shadow-2xl transform lg:rotate-3">
+<img class="w-full h-full object-cover" data-alt="diverse group of professionals standing together in a circle sharing ideas in a bright modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHL_neZE8_rsJsNJom98MR279IwnzOveHlXiqQWRsnWI19nlnUa9SGyiemc18suJ-fd5eKQL79DLKEzAxpmmELmI4MBWHMwM7DGh7ApsM5wuLfm8u8D3X5CQB7jNDuG267j4Qe9E3KJq4gSx4xmta3c7A4JzAigIS1PpEF1sv-ZndHRUXpvgVhe_F80MG6WVcFIrKYxX6PnScAVvsrgGNLypCZlTsTMJ1YoMHkDtZv1h7TYXF1RGILxVqpCbyb3DWompZDBbWoKjLw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+<!-- Floating Decorative Card -->
+<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-[240px] hidden md:block">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-3 h-12 bg-tertiary rounded-full"></div>
+<span class="font-headline font-bold text-lg">Top Strength: Strategizer</span>
+</div>
+<p class="text-xs text-on-surface-variant font-body leading-relaxed">Highly effective at identifying patterns and navigating complex obstacles.</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Social Proof / Logos -->
+<section class="py-12 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto px-8">
+<p class="text-center text-xs font-bold tracking-widest uppercase text-on-surface-variant/60 mb-8 font-label">As Featured In &amp; Trusted By</p>
+<div class="flex flex-wrap justify-center gap-12 md:gap-24 opacity-50 grayscale contrast-125">
+<span class="text-2xl font-black font-headline tracking-tighter italic">FORBES</span>
+<span class="text-2xl font-black font-headline tracking-tighter">Wired</span>
+<span class="text-2xl font-black font-headline tracking-tighter">TechCrunch</span>
+<span class="text-2xl font-black font-headline tracking-tighter italic underline decoration-primary">Harvard</span>
+<span class="text-2xl font-black font-headline tracking-tighter">FastCompany</span>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-24 md:py-32">
+<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-3xl mb-20">
+<h2 class="text-4xl md:text-5xl font-extrabold text-on-surface leading-tight tracking-tight mb-6">Designed for those who refuse to settle for average.</h2>
+<p class="text-xl text-on-surface-variant font-body">Our architecturally sound approach to human potential combines behavioral science with modern growth strategies.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-3xl relative group hover:bg-white transition-all duration-500">
+<div class="w-4 h-full absolute left-0 top-0 bg-primary-fixed rounded-l-3xl"></div>
+<div class="mb-8">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="verified">verified</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-on-surface">Scientific Accuracy</h3>
+<p class="text-on-surface-variant leading-relaxed">Leverage validated psychological assessments developed by world-leading researchers in positive psychology.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-3xl relative group hover:bg-white transition-all duration-500">
+<div class="w-4 h-full absolute left-0 top-0 bg-tertiary rounded-l-3xl"></div>
+<div class="mb-8">
+<span class="material-symbols-outlined text-4xl text-tertiary" data-icon="psychology">psychology</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-on-surface">Personalized Insights</h3>
+<p class="text-on-surface-variant leading-relaxed">Deep-dive reports that go beyond generic labels to explain exactly how your unique mix of strengths interacts.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-3xl relative group hover:bg-white transition-all duration-500">
+<div class="w-4 h-full absolute left-0 top-0 bg-outline text-primary rounded-l-3xl"></div>
+<div class="mb-8">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="trending_up">trending_up</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 text-on-surface">Actionable Growth</h3>
+<p class="text-on-surface-variant leading-relaxed">Integrated coaching and development tools designed to turn your natural talents into consistent performance.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section (Bento Style) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<span class="text-xs font-bold tracking-widest uppercase text-primary font-label">The Process</span>
+<h2 class="text-4xl md:text-5xl font-extrabold mt-4 tracking-tight">Three steps to your evolution.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[320px]">
+<div class="md:col-span-8 bg-surface-container-lowest rounded-3xl overflow-hidden p-8 flex flex-col justify-end group">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[160px]" data-icon="assignment">assignment</span>
+</div>
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-black text-xl mb-6">1</div>
+<h3 class="text-3xl font-bold mb-2">Take the Assessment</h3>
+<p class="text-on-surface-variant max-w-md">Dedicate 20 minutes to a focused series of scenarios designed to reveal your core operating patterns.</p>
+</div>
+</div>
+<div class="md:col-span-4 bg-primary text-on-primary rounded-3xl p-8 flex flex-col justify-between">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center font-black text-xl">2</div>
+<div>
+<h3 class="text-3xl font-bold mb-2">Instant Profile</h3>
+<p class="text-primary-container/80">Zero waiting. Receive your high-definition strength report the moment you complete the final question.</p>
+</div>
+</div>
+<div class="md:col-span-4 bg-tertiary-container text-on-tertiary-container rounded-3xl p-8 flex flex-col justify-between">
+<div class="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center font-black text-xl">3</div>
+<div>
+<h3 class="text-3xl font-bold mb-2">Ongoing Learning</h3>
+<p class="opacity-80">Access an ecosystem of exercises and coaching modules tailored to your specific top 5 traits.</p>
+</div>
+</div>
+<div class="md:col-span-8 relative rounded-3xl overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="close-up of a team collaborating over a tablet with charts and data in a warm sunlit creative studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlBBiPLTt_J5r7R206Lj1CYiqoN-YAQjrBvZUIbdLQxTIR2mwS0KZHvBpli_YZOPLA-lAK4D1x6cVlOLdi6kJ_JFk0EUuS-UnfKkFz3i3Kz1hGxuhkmi6T1HtLj0EO3eSLYBBynh917U8hAYQp6OPW-WzLdY5vJ_uFdoq_l0vHK-IpUIZ0uqoOJxGBHc_5yuZqn6tSU5ciH9mqYmWD-ascAC_PJ-Zx6GCvzfTy3LxidWu8WoKHHL_kxYxI2f_C8awm9hIWztpQORdR"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/80 via-on-surface/40 to-transparent flex items-center p-12">
+<div class="max-w-xs">
+<h3 class="text-3xl font-bold text-white mb-4 leading-tight italic">"The clarity I gained was revolutionary for my career."</h3>
+<p class="text-white/70 text-sm font-medium">— Marcus Chen, Product Lead</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonial Section -->
+<section class="py-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="absolute -top-12 -left-12 text-primary-container opacity-50">
+<span class="material-symbols-outlined text-[120px]" data-icon="format_quote">format_quote</span>
+</div>
+<div class="relative z-10 space-y-8">
+<div class="p-8 bg-surface-container-highest rounded-3xl border-l-8 border-primary">
+<p class="text-2xl font-body text-on-surface leading-relaxed mb-6 italic">"Ascent Strength didn't just tell me what I was good at—it gave me a roadmap for how to communicate my value to my team. My productivity has tripled."</p>
+<div class="flex items-center gap-4">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="portrait of a confident woman with professional appearance smiling at the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7kSAKF-9OkFxMk_mXWOqDvX1EiuzT8Z8FX0DHvaYyXLZFC6q0cJfQ3wV5dUoSKqN3GP-O_Swt-rDlpABL3dIcJOCZV8mVlvJPo5lZYoiS9cqLzje7m880viYDs-NIjJia_c4WAGWjevYQkGoZfElU9pt8PL7iZMRjZ--AtyxWsffURhr7PHnFjqd4CYaBM0QTpXeRjlvhzsvqzOkHKiJPUEyuFkNgF9cT4V_TKgSwVsaRW54HMxcT_k5hhYwKSjLKoUBKkElhCQDD"/>
+<div>
+<h4 class="font-bold text-on-surface">Elena Rodriguez</h4>
+<p class="text-sm text-on-surface-variant">Director of Operations, Flow State</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline/20 flex items-center justify-center hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline/20 flex items-center justify-center hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="relative grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-12">
+<div class="bg-surface-container rounded-2xl p-4 shadow-sm">
+<div class="flex gap-1 mb-2">
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="star" data-weight="fill">star</span>
+</div>
+<p class="text-xs font-medium">Life changing tool.</p>
+</div>
+<img class="rounded-3xl w-full aspect-square object-cover" data-alt="two people laughing together during a workspace meeting with natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3OlCiZF9k0B0zSL605AqqPyCVKCsI3V2ocFTsjCyqPNlJZf56N8_ZY4sBX2guyqmVlvRIEIWwLH5NlnNNJVRv6ZzDTVgkLxp6aLfnqJk6hEeuYlVoI6eaU8vt59MaBL2WeUtpTRrPaN73YB1z1IheBpxZ9uq7UXOFkd28-Z2Z2EsitkONJvXmLfyUIKMtxcddKIrqb_5lv3QmWF8VCujh7AX7Pk19zrWB8tlXu2aevkgbJan5p7Bh4Lo68Ia8DCwr0yDs8F8xpUbY"/>
+</div>
+<div class="space-y-4">
+<img class="rounded-3xl w-full aspect-[3/4] object-cover" data-alt="group of young diverse students collaborating around a wooden table in a high-tech library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzH_Zccf4kOXi57siro0sAbUncIrDGbnE9Z6Aacdym4IKEecsMl7BCiNNXTEZ7FuDGK6Y-osDLFJesQpPGJKwiKPDiGMhjOHMaswfJtGoh2zbIDVtSVfb6h6w4SBB3uGYQ_SPIKuy-ZNDPlbEr3j8MazBbHbgACi_tdHVtZyI03bfI_QchnazanhD0-FfObqhlJjK0QvQnaa8Nxa304cKaF0aFL_94C-RUpR7KOjuK-T5wfuh4IAXQxNl2a4FIPX2msJjL1gevyUQA"/>
+<div class="bg-primary text-on-primary rounded-2xl p-4 shadow-sm">
+<p class="text-xs font-bold font-label uppercase">5/5 Average Rating</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="gradient-primary rounded-[2.5rem] p-12 md:p-24 text-center text-on-primary relative overflow-hidden shadow-2xl">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 100 L50 0 L100 100 Z" fill="currentColor"></path>
+</svg>
+</div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-6xl font-extrabold mb-8 tracking-tighter">Ready to ascend?</h2>
+<p class="text-xl md:text-2xl text-primary-container mb-12 max-w-2xl mx-auto">Join 50,000+ others finding their path today. Your true potential is only one assessment away.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-white text-primary px-10 py-5 rounded-2xl text-xl font-bold shadow-xl hover:scale-105 transition-transform">
+                            Get Started Now
+                        </button>
+<button class="border-2 border-primary-container/30 text-white px-10 py-5 rounded-2xl text-xl font-bold hover:bg-white/10 transition-colors">
+                            Contact Enterprise
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 bg-teal-900 dark:bg-teal-950 border-t border-teal-800/50 font-manrope">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8">
+<div class="space-y-4">
+<div class="text-lg font-bold text-teal-50 dark:text-teal-100">Strength &amp; Growth</div>
+<p class="text-teal-400/70 text-sm max-w-xs">Empowering the architects of potential to build lives of clarity, purpose, and peak performance.</p>
+</div>
+<div class="grid grid-cols-2 gap-8 text-xs tracking-widest uppercase">
+<div class="space-y-4">
+<h4 class="text-teal-50 font-bold mb-6">Product</h4>
+<a class="block text-teal-400/70 hover:text-teal-50 transition-all" href="#">Assessment</a>
+<a class="block text-teal-400/70 hover:text-teal-50 transition-all" href="#">Coaching</a>
+<a class="block text-teal-400/70 hover:text-teal-50 transition-all" href="#">For Teams</a>
+</div>
+<div class="space-y-4">
+<h4 class="text-teal-50 font-bold mb-6">Company</h4>
+<a class="block text-teal-400/70 hover:text-teal-50 transition-all" href="#">Privacy Policy</a>
+<a class="block text-teal-400/70 hover:text-teal-50 transition-all" href="#">Terms of Service</a>
+<a class="block text-teal-400/70 hover:text-teal-50 transition-all" href="#">Contact Us</a>
+</div>
+</div>
+<div class="flex flex-col justify-between">
+<div class="space-y-4">
+<h4 class="text-teal-50 font-bold mb-6 text-xs tracking-widest uppercase">Follow Our Growth</h4>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-teal-800/50 flex items-center justify-center text-teal-400 hover:text-teal-50 transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-teal-800/50 flex items-center justify-center text-teal-400 hover:text-teal-50 transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+</div>
+</div>
+<div class="text-[10px] text-teal-400/40 tracking-[0.2em] mt-8 md:mt-0 uppercase">
+                    © 2024 Strength &amp; Growth. The Architect of Potential.
+                </div>
+</div>
+</div>
+</footer>
+</body></html>
