@@ -26,7 +26,7 @@ Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ### Live demo
 
-Visit the [GitHub Pages site](https://boonyakornm-oss.github.io/str-finder/) to try it online.
+**[Try it live here](https://boonyakornm-oss.github.io/str-finder/)**
 
 ## Tech Stack
 
